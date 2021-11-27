@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       data: { message: "Edit Selected Row", rowData: selectedRecord }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result.event) {
       }
     });
