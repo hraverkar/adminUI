@@ -20,11 +20,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { EditDialogComponent } from './dialog/edit-dialog/edit-dialog.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule  } from '@angular/material/sort';
+import { HeaderComponent } from './ui/header/header.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { MatSortModule  } from '@angular/material/sort';
     MatDialogModule,
     MatButtonModule,
     MatCardModule,
-    MatSortModule
+    MatSortModule,
+    MatToolbarModule
 
   ],
   entryComponents: [EditDialogComponent],
