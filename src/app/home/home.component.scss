@@ -1,0 +1,11 @@
+table {
+  width: 100%;
+}
+
+::ng-deep th.mat-header-cell {
+  font-weight: bolder;
+}
+
+::ng-deep .mat-form-field {
+  display: unset !important;
+}

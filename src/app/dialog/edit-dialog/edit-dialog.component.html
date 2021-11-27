@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{data.message}}</h2>
+
+<form class="example-form" [formGroup]="dialogForm" (ngSubmit)="onSave()">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" id="name" type="text" placeholder="Please enter the full name"
+      [(ngModel)]="dataRow.name">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="text" id="email" placeholder="Please enter the email"
+      [(ngModel)]="dataRow.email">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Role</mat-label>
+    <input matInput formControlName="role" type="text" id="role" placeholder="Please enter the role"
+      [(ngModel)]="dataRow.role">
+  </mat-form-field>
+
+
+  <div mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="primary" class="btn-grad" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button mat-dialog-close color="primary" class="btn-grad" type="submit"
+      (click)="onSave()">Save</button>
+  </div>
+</form>
