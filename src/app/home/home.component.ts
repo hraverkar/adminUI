@@ -1,7 +1,9 @@
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditDialogComponent } from '../dialog/edit-dialog/edit-dialog.component';
 import { IAdmin } from '../interface/i-admin';
@@ -12,22 +14,27 @@ import { DataService } from '../services/data.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   public displayColumns: string[] = ['select', 'name', 'email', 'role', 'action'];
 
-  public constructor(private dataService: DataService, public dialog: MatDialog) { }
+  public constructor(private dataService: DataService, public dialog: MatDialog, private _liveAnnouncer: LiveAnnouncer) { }
   public data: any;
   public selection = new SelectionModel<IAdmin>(true, []);
   public dataSource: any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   public ngOnInit(): void {
     this.dataService.getAdminData().subscribe(res => {
       this.data = res.body;
       this.dataSource = new MatTableDataSource<IAdmin>(this.data);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
+  }
+
+  ngAfterViewInit() {
   }
 
   public isAllSelected() {
@@ -100,6 +107,14 @@ export class HomeComponent implements OnInit {
     }
     else {
       return true
+    }
+  }
+
+  public announceSortChange(sortState: any) {
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
     }
   }
 }

@@ -9,3 +9,7 @@ table {
 ::ng-deep .mat-form-field {
   display: unset !important;
 }
+
+th.mat-sort-header-sorted {
+  color: black;
+}

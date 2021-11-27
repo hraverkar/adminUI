@@ -19,8 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { EditDialogComponent } from './dialog/edit-dialog/edit-dialog.component';
 import { MatCardModule } from '@angular/material/card';
-
-
+import { MatSortModule  } from '@angular/material/sort';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +42,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatSortModule
 
   ],
   entryComponents: [EditDialogComponent],
